@@ -1,0 +1,8 @@
+{
+	"name": "py_base64",
+	"service": "python",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"workspaceFolder": "/src"
+}
