@@ -6,6 +6,8 @@ base64_table = [
 
 def base64encode(data):
 	assert(type(data) == bytes)
+	if len(data) == 0:
+		return ""
 	data_binary = "".join(bin(x) for x in data)
 	data_binary = data_binary.replace("b", "")
 
@@ -29,6 +31,8 @@ def base64encode(data):
 
 
 def base64decode(data):
+	if len(data) == 0:
+		return ""
 	data = list(data)
 	if "=" in data:
 		data = list(filter(("=").__ne__, data))
