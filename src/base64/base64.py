@@ -20,9 +20,9 @@ def base64encode(data):
 
 	encoded_data = [base64_table[int(idx, 2)] for idx in data_binary_list]
 	
-	equal_padding_length = 4 - len(encoded_data) % 4
-	if equal_padding_length:
-		for _ in range(equal_padding_length):
+	encoded_data_length = len(encoded_data) % 4
+	if encoded_data_length:
+		for _ in range(4 - encoded_data_length):
 			encoded_data.append("=")
 	
 	encoded_data = "".join(encoded_data)
