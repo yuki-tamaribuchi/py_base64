@@ -5,7 +5,8 @@ base64_table = [
 ]
 
 def base64encode(data):
-	data_binary = "".join(bin(ord(x)) for x in data)
+	assert(type(data) == bytes)
+	data_binary = "".join(bin(x) for x in data)
 	data_binary = data_binary.replace("b", "")
 
 	data_binary_list = [data_binary[i:i+6] for i in range(0, len(data_binary), 6)]
