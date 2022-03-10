@@ -1,7 +1,7 @@
 from base64.base64 import base64encode, base64decode
 
 if __name__ == "__main__":
-	data = "ABCDEFG"
+	data = b"ABCDEFG"
 
 	print("data: ", data)
 
