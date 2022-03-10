@@ -46,4 +46,5 @@ def base64decode(data):
 		data = data[:-1]
 	
 	decoded_data = "".join([chr(int(s, 2)) for s in data])
+	decoded_data = bytes(decoded_data, "utf-8")
 	return decoded_data
