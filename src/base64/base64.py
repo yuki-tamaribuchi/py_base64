@@ -26,18 +26,18 @@ def base64encode(data):
 			encoded_data.append("=")
 	
 	encoded_data = "".join(encoded_data)
-
+	
 	return encoded_data
 
 
 def base64decode(data):
 	if len(data) == 0:
-		return ""
+		return b""
 	data = list(data)
-	if "=" in data:
-		data = list(filter(("=").__ne__, data))
+	if 61 in data:
+		data = list(filter((61).__ne__, data))
 	
-	data = [bin(base64_table.index(s)).replace("0b", "") for s in data]
+	data = [bin(base64_table.index(chr(s))).replace("0b", "") for s in data]
 	data = ["0" *(6-len(b)) + b for b in data]
 	data = "".join(data)
 	data = [data[i:i+8] for i in range(0, len(data), 8)]
