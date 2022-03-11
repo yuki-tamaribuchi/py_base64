@@ -7,7 +7,7 @@ base64_table = [
 def base64encode(data):
 	assert(type(data) == bytes)
 	if len(data) == 0:
-		return ""
+		return b""
 	data_binary = "".join(bin(x) for x in data)
 	data_binary = data_binary.replace("b", "")
 
@@ -26,7 +26,7 @@ def base64encode(data):
 			encoded_data.append("=")
 	
 	encoded_data = "".join(encoded_data)
-	
+	encoded_data = bytes(encoded_data, "utf-8")
 	return encoded_data
 
 
