@@ -8,8 +8,14 @@ def base64encode(data):
 	assert(type(data) == bytes)
 	if len(data) == 0:
 		return b""
-	data_binary = "".join(bin(x) for x in data)
-	data_binary = data_binary.replace("b", "")
+
+	data_binary = ""
+	for item in data:
+		bin_item = bin(item).replace("0b", "")
+		if len(bin_item)!=8:
+			bin_item = "".join(["0" for _ in range(8 - len(bin_item))]) + bin_item
+			data_binary += bin_item
+
 
 	data_binary_list = [data_binary[i:i+6] for i in range(0, len(data_binary), 6)]
 	
@@ -44,7 +50,7 @@ def base64decode(data):
 	
 	if len(data[-1])!=8:
 		data = data[:-1]
-	
 	decoded_data = "".join([chr(int(s, 2)) for s in data])
 	decoded_data = bytes(decoded_data, "utf-8")
+	
 	return decoded_data
